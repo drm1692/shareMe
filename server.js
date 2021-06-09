@@ -12,11 +12,11 @@ const connectDb = require("./config/db")
 connectDB()
 
 //cors setup
-// const corsOptions = {
-
-//     origin: process.env.ALLOWED_CLIENTS
-// }
-app.use(cors())
+const corsOptions = {
+    methods: ['POST'],
+    origin: "http://127.0.0.1:3000"
+}
+app.use(cors(corsOptions))
 //template engine
 app.set("views", path.join(__dirname, "/views"))
 app.set("view engine", "ejs")
