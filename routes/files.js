@@ -88,7 +88,7 @@ router.post("/send", async (req,res) => {
             emailFrom: emailFrom,
             downloadLink: `${process.env.APP_BASE_URL}/files/${file.uuid}`,
             size: parseInt(file.size/100) + "KB",
-            expires = "24 hours"
+            expires: "24 hours"
         })
     })
     return res.send({ success: true})
