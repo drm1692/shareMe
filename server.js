@@ -12,11 +12,18 @@ const connectDb = require("./config/db")
 connectDB()
 
 //cors setup
-const corsOptions = {
-    methods: ['POST'],
-    origin: "http://127.0.0.1:3000"
-}
-app.use(cors(corsOptions))
+app.use((req,res,next) => {
+
+    res.header('Access-Control-Allow-Origin','*')
+    res.header('Access-Control-Allow-Methods','GET,PUT,POST,DELETE')
+    res.header('Access-Control-Allow-Headers','Content-Type')
+    next()
+})
+// const corsOptions = {
+//     methods: ['POST'],
+//     origin: "http://127.0.0.1:3000"
+// }
+// app.use(cors(corsOptions))
 //template engine
 app.set("views", path.join(__dirname, "/views"))
 app.set("view engine", "ejs")
