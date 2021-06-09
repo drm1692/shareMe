@@ -7,23 +7,24 @@ const cors = require("cors")
 const PORT = process.env.PORT || 3000
 app.use(express.static("public"))
 app.use(express.json())
+app.use(cors())
 
 const connectDb = require("./config/db")
 connectDB()
 
 //cors setup
-app.use((req,res,next) => {
+// app.use((req,res,next) => {
 
-    res.header('Access-Control-Allow-Origin','*')
-    res.header('Access-Control-Allow-Methods','GET,PUT,POST,DELETE')
-    res.header('Access-Control-Allow-Headers','Content-Type')
-    next()
-})
+//     res.header('Access-Control-Allow-Origin','*')
+//     res.header('Access-Control-Allow-Methods','GET,PUT,POST,DELETE')
+//     res.header('Access-Control-Allow-Headers','Content-Type')
+//     next()
+// })
 // const corsOptions = {
 //     methods: ['POST'],
 //     origin: "http://127.0.0.1:3000"
 // }
-// app.use(cors(corsOptions))
+
 //template engine
 app.set("views", path.join(__dirname, "/views"))
 app.set("view engine", "ejs")
