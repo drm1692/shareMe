@@ -50,6 +50,7 @@ router.post("/", (req, res) => {
         })
 
     const ressponse = await file.save()
+    res.setHeader('Access-Control-Allow-Credentials', 'true')
     return response.json({ file: `${process.env.APP_BASE_URL}/files/${response.uuid}`})
     //http://localhost:3000/files/25153dkkkdj-2354psknejj
 
