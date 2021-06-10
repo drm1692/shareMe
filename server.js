@@ -2,7 +2,7 @@ const express = require('express')
 const connectDB = require('./config/db')
 const app = express()
 const path = require("path")
-const cors = require("cors")
+//const cors = require("cors")
 
 const PORT = process.env.PORT || 3000
 app.use(express.static("public"))
@@ -25,7 +25,7 @@ connectDB()
 //     origin: "http://127.0.0.1:3000",
 //     credentials: true
 // }
-app.options("*",cors())
+//app.options("*",cors())
 
 //template engine
 app.set("views", path.join(__dirname, "/views"))
