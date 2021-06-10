@@ -32,7 +32,7 @@ router.post("/", (req, res) => {
 
         if(!req.file){
 
-            return res.json({error : "all fields are required."})
+            return res.json({error : "file does not uploaded."})
         }
 
         if(err){
