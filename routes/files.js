@@ -22,7 +22,7 @@ let upload = multer({
     limits: { fileSize: 1000000 * 100 },
 }).single("myfile")
 
-router.post("/", (req, res) => {
+router.post("", (req, res) => {
 
     //store files
 
@@ -49,7 +49,6 @@ router.post("/", (req, res) => {
             size: req.file.size
             
         })
-        console.log(file.path);
 
         const response = await file.save()
         //res.setHeader('Access-Control-Allow-Credentials', 'true')
