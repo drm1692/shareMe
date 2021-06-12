@@ -19,7 +19,7 @@ let storage = multer.diskStorage({
 let upload = multer({
 
     storage,
-    limit: { fileSize: 1000000 * 100 },
+    limits: { fileSize: 1000000 * 100 },
 }).single("myfile")
 
 router.post("/", (req, res) => {
@@ -47,7 +47,9 @@ router.post("/", (req, res) => {
             uuid: uuidv4(),
             path: req.file.path,
             size: req.file.size
+            
         })
+        console.log(file.path);
 
         const response = await file.save()
         //res.setHeader('Access-Control-Allow-Credentials', 'true')
