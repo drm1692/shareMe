@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer")
-const router = require("../routes/show")
+// const router = require("../routes/show")
 
-async function sendMail( from, to, subject, text, html){
+module.exports = async({ from, to, subject, text, html}) => {
 
     let transporter = nodemailer.createTransport({
 
@@ -10,9 +10,9 @@ async function sendMail( from, to, subject, text, html){
         secure: false,
         auth: {
             user: process.env.env.MAIL_USER,
-            pass: MAIL_PASS
+            pass: process.env.MAIL_PASS
             
-        }
+        },
     })
     let info = await transporter.sendMail({
 
@@ -23,4 +23,3 @@ async function sendMail( from, to, subject, text, html){
         html: html 
     })
 }
-module.exports = sendMail

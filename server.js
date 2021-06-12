@@ -1,15 +1,16 @@
+require("dotenv").config()
 const express = require('express')
-const connectDB = require('./config/db')
 const app = express()
+const PORT = process.env.PORT || 3000
 const path = require("path")
 const cors = require("cors")
 
-const PORT = process.env.PORT || 3000
+
 app.use(express.static("public"))
 app.use(express.json())
 
 
-const connectDb = require("./config/db")
+const connectDB = require("./config/db")
 connectDB()
 
 //cors setup
