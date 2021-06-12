@@ -53,7 +53,7 @@ router.post("/", (req, res) => {
 
         const response = await file.save()
         //res.setHeader('Access-Control-Allow-Credentials', 'true')
-        res.json({ file: `${process.env.APP_BASE_URL}/files/${response.uuid}` })
+        res.json({ file: `${process.env.APP_BASE_URL}//files/${response.uuid}` })
         //http://localhost:3000/files/25153dkkkdj-2354psknejj
 
     })
@@ -91,7 +91,7 @@ router.post("/send", async (req, res) => {
             html: require("../services/emailTemplate")({
 
                 emailFrom: emailFrom,
-                downloadLink: `${process.env.APP_BASE_URL}/files/${file.uuid}?source=email`,
+                downloadLink: `${process.env.APP_BASE_URL}//files/${file.uuid}?source=email`,
                 size: parseInt(file.size / 100) + "KB",
                 expires: "24 hours"
             })
