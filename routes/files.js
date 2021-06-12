@@ -22,7 +22,7 @@ let upload = multer({
     limits: { fileSize: 1000000 * 100 },
 }).single("myfile")
 
-router.post("", (req, res) => {
+router.post("/", (req, res) => {
 
     //store files
 
@@ -52,7 +52,7 @@ router.post("", (req, res) => {
 
         const response = await file.save()
         //res.setHeader('Access-Control-Allow-Credentials', 'true')
-        res.json({ file: `${process.env.APP_BASE_URL}/files/${response.uuid}` })
+        res.json({ file: `${process.env.APP_BASE_URL}files/${response.uuid}` })
         //http://localhost:3000/files/25153dkkkdj-2354psknejj
 
     })
