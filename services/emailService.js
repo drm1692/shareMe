@@ -1,5 +1,4 @@
 const nodemailer = require("nodemailer")
-// const router = require("../routes/show")
 
 module.exports = async({ from, to, subject, text, html}) => {
 
@@ -9,7 +8,7 @@ module.exports = async({ from, to, subject, text, html}) => {
         port: process.env.SMTP_PORT,
         secure: false,
         auth: {
-            user: process.env.env.MAIL_USER,
+            user: process.env.MAIL_USER,
             pass: process.env.MAIL_PASS
             
         },
