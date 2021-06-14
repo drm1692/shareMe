@@ -60,8 +60,6 @@ router.post("/", (req, res) => {
 })
 router.post("/send", async (req, res) => {
 
-    console.log(req.body)
-    return res.send({})
     const { uuid, emialTo, emailFrom, expiresIn } = req.body
     //validate request
 
@@ -96,13 +94,8 @@ router.post("/send", async (req, res) => {
                 size: parseInt(file.size / 100) + "KB",
                 expires: "24 hours"
             })
-        }).then(() => {
-
-            return res.json({ success: true })
-        }).catch(err => {
-
-            return res.status(500).json({ error: 'Error in email sending.' });
         })
+        return res.send({ success: true})
 
     } catch(err){
         return res.status(500).send({ error: "something went wrong"})
