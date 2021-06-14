@@ -60,6 +60,8 @@ router.post("/", (req, res) => {
 })
 router.post("/send", async (req, res) => {
 
+    console.log(req.body)
+    return res.send({})
     const { uuid, emialTo, emailFrom, expiresIn } = req.body
     //validate request
 
@@ -89,8 +91,8 @@ router.post("/send", async (req, res) => {
             text: `${emailFrom} shared a file with you`,
             html: require("../services/emailTemplate")({
 
-                emailFrom,
-                downloadLink: `${process.env.APP_BASE_URL}files/${file.uuid}`,
+                emailFrom: emailFrom,
+                downloadLink: `${process.env.APP_BASE_URL}/files/${file.uuid}`,
                 size: parseInt(file.size / 100) + "KB",
                 expires: "24 hours"
             })
