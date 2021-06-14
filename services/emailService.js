@@ -11,11 +11,11 @@ function sendMail ({ from, to, subject, text, html}) {
             user: process.env.MAIL_USER,
             pass: process.env.MAIL_PASS
             
-        },
+        }
     })
     let info = await transporter.sendMail({
 
-        from: `shareMe <${from}>`,
+        from : `shareMe <${from}>`,
         to: to,
         subject: subject,
         text: text,

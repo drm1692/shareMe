@@ -60,7 +60,7 @@ router.post("/", (req, res) => {
 })
 router.post("/send", async (req, res) => {
 
-    const { uuid, emialTo, emailFrom, expiresIn } = req.body
+    const { uuid, emialTo, emailFrom} = req.body
     //validate request
 
     if (!uuid || !emialTo || !emailFrom) {
