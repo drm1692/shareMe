@@ -28,13 +28,6 @@ router.post("/", (req, res) => {
 
     upload(req, res, async (err) => {
 
-        //validate request
-
-        // if(!req.file){
-
-        //     return res.json({error : "file does not uploaded."})
-        // }
-
         if (err) {
 
             return res.status(500).send({ error: err.message })
@@ -58,7 +51,7 @@ router.post("/", (req, res) => {
     })
 
 })
-router.post("/send", async (req, res) => {
+router.post("/send", (req, res) => {
 
     // console.log(req.body);
     // return res.send({})
@@ -83,7 +76,7 @@ router.post("/send", async (req, res) => {
         const response = await file.save()
 
         //send email
-        const sendMail = require("../services/emailService")
+        const sendMail = require("../services/emailService");
         sendMail({
             from: emailFrom,
             to: emialTo,
