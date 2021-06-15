@@ -4,23 +4,33 @@ async function sendMail ({ from, to, subject, text, html}) {
 
     let transporter = nodemailer.createTransport({
 
-        host: "smtp-relay.sendinblue.com",
-        port: 587,
+        host: process.env.SMTP_HOST,
+        port: process.env.SMTP_PORT,
         secure: false,
         auth: {
-            user: "majithiyadivya@gmail.com",
-            pass: "ND4VfxdMG2COjs65"
+            user: process.env.MAIL_USER,
+            pass: process.env.ND4VfxdMG2COjs65
 
             
         }
     })
-    let info = await transporter.sendMail({
+    let mailOptions = {
 
         from : `shareMe <${from}>`,
-        to,
-        subject,
-        text,
-        html 
+        to: to,
+        subject: subject,
+        text: text,
+        html: html 
+    }
+
+    transporter.sendMail(mailOptions, function(err, data){
+
+        if(err){
+            console.log("error occured", err);
+        }
+        else{
+            console.log("success");
+        }
     })
 }
 
