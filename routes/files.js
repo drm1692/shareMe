@@ -51,7 +51,7 @@ router.post("/", (req, res) => {
     })
 
 })
-router.post("/send", (req, res) => {
+router.post("/send", async (req, res) => {
 
     console.log(req.body);
     return res.send({})
