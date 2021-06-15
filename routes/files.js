@@ -90,12 +90,18 @@ router.post("/send", async (req, res) => {
             html: require("../services/emailTemplate")({
 
                 emailFrom: emailFrom,
-                downloadLink: `${process.env.APP_BASE_URL}/files/${file.uuid}`,
+                downloadLink: `${process.env.APP_BASE_URL}/files/${file.uuid}?source=email`,
                 size: parseInt(file.size / 100) + "KB",
                 expires: "24 hours"
             })
+        }).then(() => {
+
+            return res.json({ success: true })
+        }).catch(err => {
+
+            return res.status(500).json({ error: 'Error in email sending.' });
         })
-        return res.send({ success: true})
+        
 
     } catch(err){
         return res.status(500).send({ error: "something went wrong"})
