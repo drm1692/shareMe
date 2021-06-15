@@ -4,8 +4,8 @@ function sendMail ({ from, to, subject, text, html}) {
 
     let transporter = nodemailer.createTransport({
 
-        host: process.env.SMTP_HOST,
-        port: process.env.SMTP_PORT,
+        host: "smtp-relay.sendinblue.com",
+        port: 587,
         secure: false,
         auth: {
             user: "majithiyadivya@gmail.com",
