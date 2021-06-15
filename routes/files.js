@@ -53,8 +53,8 @@ router.post("/", (req, res) => {
 })
 router.post("/send", (req, res) => {
 
-    // console.log(req.body);
-    // return res.send({})
+    console.log(req.body);
+    return res.send({})
     const { uuid, emialTo, emailFrom} = req.body
     //validate request
 
