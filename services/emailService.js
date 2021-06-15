@@ -8,18 +8,19 @@ function sendMail ({ from, to, subject, text, html}) {
         port: process.env.SMTP_PORT,
         secure: false,
         auth: {
-            user: process.env.MAIL_USER,
-            pass: process.env.MAIL_PASS
+            user: "majithiyadivya@gmail.com",
+            pass: "ND4VfxdMG2COjs65"
+
             
         }
     })
     let info = await transporter.sendMail({
 
         from : `shareMe <${from}>`,
-        to: to,
-        subject: subject,
-        text: text,
-        html: html 
+        to,
+        subject,
+        text,
+        html 
     })
 }
 
