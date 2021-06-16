@@ -24,5 +24,6 @@ module.exports = async ({ from, to, subject, text, html}) => {
         html: html 
       
     })
+    console.log(info);
 }
 

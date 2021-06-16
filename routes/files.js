@@ -53,12 +53,12 @@ router.post("/", (req, res) => {
 })
 router.post("/send", async (req, res) => {
 
-    console.log(req.body);
-    return res.send({})
-    const { uuid, emialTo, emailFrom} = req.body
+    // console.log(req.body);
+    // return res.send({})
+    const { uuid, emailTo, emailFrom} = req.body
     //validate request
 
-    if (!uuid || !emialTo || !emailFrom) {
+    if (!uuid || !emailTo || !emailFrom) {
 
         return res.status(422).send({ error: "All fields are required except expire" })
     }
@@ -72,14 +72,14 @@ router.post("/send", async (req, res) => {
 
         }
         file.sender = emailFrom
-        file.receiver = emialTo
+        file.receiver = emailTo
         const response = await file.save()
 
         //send email
         const sendMail = require("../services/emailService");
         sendMail({
             from: emailFrom,
-            to: emialTo,
+            to: emailTo,
             subject: "shareMe file sharing",
             text: `${emailFrom} shared a file with you`,
             html: require("../services/emailTemplate")({
@@ -94,11 +94,14 @@ router.post("/send", async (req, res) => {
             return res.json({ success: true })
         }).catch(err => {
 
+            console.log(err);
             return res.status(500).json({ error: 'Error in email sending.' });
         })
         
 
     } catch(err){
+    
+        console.log(err);
         return res.status(500).send({ error: "something went wrong"})
     }
     
